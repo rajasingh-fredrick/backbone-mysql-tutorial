@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backbone Route Tutorial</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+	
+	<a href="#/new" class="btn btn-primary">New User</a>
+	<div class="container">
+		<h1>Shopping Cart</h1>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>Item Name</th>
+					<th>Qty</th>
+					<th>Price</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="item-list-view">
+
+			</tbody>
+
+		</table>
+		<div class="page container"> </div>
+
+	</div>
+	<script type="text/template" class="item-view">
+			<td><span class="item"><%= name %></span></td>
+			<td><span class="qty"><%= qty %></span></td>
+			<td><span class="price"><%= price %></span></td>
+			<td> <a href="#/edit/<%= id %>" class="btn btn-primary"> Edit </a></td>
+	</script>
+	<script type="text/template" class="edit-item-template">
+		<form  class="add-item-form">
+		<% if ( id ) { %>
+		<input type="hidden" name="id" value="<%= id %>">
+		<% }; %>
+			<table class="table table-stripped">
+				<tr>
+					<td><input type="text" class="edit-name" name="name" value="<%= name ? name : '' %>"></td>
+					<td><input type="text" class="edit-qty" name="qty" value="<%= qty ? qty: '' %>" ></td>
+					<td><input type="text" class="edit-price" name="price" value="<%= price ? price : '' %>"></td>
+					<td>
+					    <button type="submit" value="Submit"  class="btn btn-primary add-item"><%= (name) ? 'Update':'Add' %> </button>
+					</td>
+					<% if ( name ) {  %>
+					   <td> <button type="button" class="btn btn-primary delete-item"> Delete </button></td>		
+					<% }; %>			
+				</tr>
+			</table>
+		</form>
+	</script>
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/backbone/backbone.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="js/script.js"></script>
+
+
+</body>
+</html>
